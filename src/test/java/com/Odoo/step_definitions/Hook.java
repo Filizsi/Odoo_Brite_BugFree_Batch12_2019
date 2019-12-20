@@ -13,7 +13,7 @@ public class Hook {
     @Before//it is coming Io.cucumber java
     public void setup(){
         Driver.get().manage().window().maximize();
-        System.out.println("Test setup");
+
     }
     @After//coming from cucumber java
 
@@ -21,7 +21,7 @@ public class Hook {
         if(scenario.isFailed()){
             System.out.println("Test failed");
             byte[] screenshot=((TakesScreenshot)Driver.get()).getScreenshotAs((OutputType.BYTES));
-            scenario.embed(screenshot,"image/png","Smoke test");
+            scenario.embed(screenshot,"image/png");
         }else{
             System.out.println("Cleanup");
             System.out.println("Test completed!");
