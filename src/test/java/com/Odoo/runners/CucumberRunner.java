@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/feature",//path to feature
+        features = "src/test/resources/features",//path to feature
         glue="com/Odoo/step_definitions",//path to step_definitions
         dryRun = false,
-        tags="",
+        tags="@pos_manager",
         plugin={"html:target/default-cucumber-reports",
         "json:target/cucumber.json"
         }
