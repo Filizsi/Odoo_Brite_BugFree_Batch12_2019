@@ -1,6 +1,6 @@
 package com.Odoo.step_definitions;
 
-import com.Odoo.Pages.LoginPage;
+import com.Odoo.pages.LoginPage;
 import com.Odoo.utilities.BrowserUtils;
 import com.Odoo.utilities.ConfigurationReader;
 import com.Odoo.utilities.Driver;

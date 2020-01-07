@@ -1,4 +1,4 @@
-package com.Odoo.Pages;
+package com.Odoo.pages;
 
 import com.Odoo.utilities.Driver;
 import org.openqa.selenium.Keys;

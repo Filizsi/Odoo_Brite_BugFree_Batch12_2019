@@ -1,4 +1,4 @@
-package com.Odoo.Pages;
+package com.Odoo.pages;
 
 import com.Odoo.utilities.BrowserUtils;
 import com.Odoo.utilities.Driver;
@@ -7,10 +7,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+public  class BasePage {
+
+
 @FindBy(css ="[class='breadcrumb']> li")
  public WebElement  pageSubTitle;
 
