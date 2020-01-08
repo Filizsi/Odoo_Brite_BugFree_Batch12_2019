@@ -4,21 +4,17 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
-@RunWith(Cucumber.class)//this(RunWith) is from junit, junit is engine for cucumber
-@CucumberOptions(//path of our features folder
+@RunWith(Cucumber.class)
+@CucumberOptions(
         features = "src/test/resources/features",//path to feature
-        glue="com/vytrack/step_definitions",//path to step_definitions
+        glue="com/Odoo/step_definitions",//path to step_definitions
         dryRun = false,
-        tags="@smoke_test",//to specify the test specifically, I want to run all the scenarios, which has this tags
-        //      others are ignored
+        tags="@vendor",
         plugin={"html:target/default-cucumber-reports",
         "json:target/cucumber.json"
-        }//default cucumber html report
-        //if we put ~@negative_test or write not@negative_test in front of the @, we skip that test
-        //we can create any tag name, @modules, @smoke, @regression, 2user story
-
+        }
 )
-public class CucumberRunner {//this class is our trigger
+public class CucumberRunner {
 
 
 }
