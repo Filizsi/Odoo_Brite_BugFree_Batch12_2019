@@ -1,9 +1,12 @@
 package com.Odoo.pages;
 
+import com.Odoo.utilities.BrowserUtils;
 import com.Odoo.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 
 public class CreateEventsPage {
@@ -19,31 +22,31 @@ public class CreateEventsPage {
     @FindBy(css="[name='name']")
     public WebElement eventsName;
 
-    @FindBy(css = "[id*='o_field_input_45']")
+    @FindBy(xpath = "//table[1][@class='o_group o_inner_group o_group_col_6']//tbody//tr[1]//td[2]//div//input")
     public WebElement organizer;
 
     @FindBy(xpath = "//*[@class='ui-menu-item'][1]")
     public WebElement organizerName;
 
-    @FindBy(css ="[id='o_field_input_23']")
+    @FindBy(xpath = "//table[1][@class='o_group o_inner_group o_group_col_6']//tbody//tr[2]//td[2]//div//div//input")
     public WebElement location;
 
     @FindBy(xpath = "//body/ul[2]/li[1]/a")
     public WebElement locationName;
 
-    @FindBy(css = "[id='o_field_input_25']")
+    @FindBy(xpath = "//table[1][@class='o_group o_inner_group o_group_col_6']//tbody//tr[4]//td[2]//div//div//input")
     public WebElement responsible;
 
-    @FindBy(xpath = "//*[@id='ui-id-129']/a")
+    @FindBy(xpath = "//body/ul[4]//li[1]//a")
     public WebElement chooseAdministrator;
 
-    @FindBy(css = "[id='o_field_input_26']")
+    @FindBy(xpath = "//table[2][@class='o_group o_inner_group o_group_col_6']//tbody//tr[1]//td[2]//div//div//input")
     public WebElement category;
 
-    @FindBy(css = "[id='o_field_input_29']")
+    @FindBy(xpath = "//table[3][@class='o_group o_inner_group o_group_col_6']//tbody//tr[1]//td[2]//div//input")
     public WebElement startDate;
 
-    @FindBy(css = "[id='o_field_input_30']")
+    @FindBy(xpath = "//table[3][@class='o_group o_inner_group o_group_col_6']//tbody//tr[2]//td[2]//div//input")
     public WebElement endDate;
 
     @FindBy(css = "button[class='btn btn-sm btn-default oe_highlight']")
@@ -52,7 +55,24 @@ public class CreateEventsPage {
     @FindBy(linkText = "Events")
     public WebElement eventModule;
 
+    @FindBy(xpath = "//*[text()='Finish Event']")
+    public WebElement finishEvent;
 
+    @FindBy(linkText = "Events")
+    public WebElement eventsLink;
+
+    @FindBy(xpath = "//button[@accesskey='s']")
+    public WebElement saveKey;
+
+    @FindBy(xpath = "//table//tbody//tr")
+    public List<WebElement> events;
+
+
+
+    public  List <String> eventsList(){
+       return  BrowserUtils.getListOfStrings(events);
+
+    }
 
 
 

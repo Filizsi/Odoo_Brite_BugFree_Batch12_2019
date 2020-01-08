@@ -6,6 +6,7 @@ import com.Odoo.utilities.BrowserUtils;
 import com.Odoo.utilities.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 
 public class CreateAnEventStepDefinitions {
     CreateEventsPage createEventsPage=new CreateEventsPage();
@@ -45,16 +46,17 @@ public class CreateAnEventStepDefinitions {
         createEventsPage.organizer.click();
         BrowserUtils.waitForClickablility(createEventsPage.organizerName,2);
         createEventsPage.organizerName.click();
-        BrowserUtils.waitForClickablility(createEventsPage.organizer,2);
+
+
 
 
     }
     @Then("user picks location")
     public void userPicksLocation() {
-//        BrowserUtils.wait(3);
-////        createEventsPage.location.click();
-//        BrowserUtils.waitForClickablility(createEventsPage.locationName,2);
-//        createEventsPage.locationName.click();
+        BrowserUtils.wait(3);
+        createEventsPage.location.click();
+        BrowserUtils.waitForClickablility(createEventsPage.locationName,2);
+        createEventsPage.locationName.click();
 
 
     }
@@ -65,6 +67,7 @@ public class CreateAnEventStepDefinitions {
     @Then("user picks who is responsible")
     public void userPicksWhoIsResponsible() {
         createEventsPage.responsible.click();
+        BrowserUtils.waitForClickablility(createEventsPage.chooseAdministrator,2);
         createEventsPage.chooseAdministrator.click();
     }
 
@@ -81,7 +84,16 @@ public class CreateAnEventStepDefinitions {
     @And("user clicks the confirm event button")
     public void userClicksTheConfirmEventButton() {
         createEventsPage.confirmButton.click();
+        BrowserUtils.wait(3);//demo
+        createEventsPage.finishEvent.click();
+        createEventsPage.saveKey.click();
+        BrowserUtils.wait(3);//demo
     }
 
 
+    @And("user verifies that event is created")
+    public void userVerifiesThatEventIsCreated() {
+//       createEventsPage.eventsList();
+
+    }
 }

@@ -8,7 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Function;
 
 public class BrowserUtils {
@@ -164,4 +166,18 @@ public class BrowserUtils {
         System.out.println(System.getProperty("user.dir"));
     }
 
+
+
+    public static List<String> getListOfStrings(List<WebElement> listOfWebElements) {
+        List<String> listOfStrings = new ArrayList<>();
+        for (WebElement element : listOfWebElements) {
+            String value = element.getText().trim();
+            //if there is no text
+            //do not add this blank text into list
+            if (value.length() > 0) {
+                listOfStrings.add(value);
+            }
+        }
+        return listOfStrings;
+    }
 }
