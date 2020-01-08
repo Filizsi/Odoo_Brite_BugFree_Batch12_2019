@@ -1,5 +1,6 @@
 package com.Odoo.step_definitions;
 
+import com.Odoo.Pages.BasePage;
 import com.Odoo.Pages.CreateVendorPage;
 import com.Odoo.Pages.LoginPage;
 import com.Odoo.utilities.BrowserUtils;
@@ -8,7 +9,7 @@ import com.Odoo.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
-public class CreateVendorStepDefinitions {
+public class CreateVendorStepDefinitions extends BasePage {
 
     CreateVendorPage newVendor = new CreateVendorPage();
     LoginPage login = new LoginPage();
@@ -31,7 +32,7 @@ public class CreateVendorStepDefinitions {
 
     @Then("User navigates to “Purchases” then to “vendors”")
     public void user_navigates_to_Purchases_then_to_vendors() {
-        newVendor.purchaseButton.click();
+       Driver.get(newVendor.purchaseButton).click();
         BrowserUtils.wait(6);
         newVendor.vendorsButton.click();
         BrowserUtils.wait(6);
