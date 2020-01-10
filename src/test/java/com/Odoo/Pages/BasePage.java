@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -40,5 +41,14 @@ public WebElement loaderMask;
 
 
     }
+
+    //**************Viktoria****************
+      public BasePage() {
+        //this method requires to provide webdriver object for @FindBy
+        //and page class
+        //this means this page class
+        PageFactory.initElements(Driver.get(), this);
+    }
+    //*****************Viktoria**************
 
 }

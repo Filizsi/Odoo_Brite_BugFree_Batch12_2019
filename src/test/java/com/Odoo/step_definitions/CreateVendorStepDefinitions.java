@@ -32,7 +32,7 @@ public class CreateVendorStepDefinitions extends BasePage {
 
     @Then("User navigates to “Purchases” then to “vendors”")
     public void user_navigates_to_Purchases_then_to_vendors() {
-       Driver.get(newVendor.purchaseButton).click();
+       //Driver.get(newVendor.purchaseButton).click();
         BrowserUtils.wait(6);
         newVendor.vendorsButton.click();
         BrowserUtils.wait(6);
