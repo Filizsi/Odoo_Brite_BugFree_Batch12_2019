@@ -7,21 +7,23 @@ import com.Odoo.utilities.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
+
 
 public class CreateAnEventStepDefinitions {
-    CreateEventsPage createEventsPage=new CreateEventsPage();
+    CreateEventsPage createEventsPage = new CreateEventsPage();
 
     @Then("user logs in as events manager")
     public void userLogsInAsEventsManager() {
-        String username= ConfigurationReader.getProperty("eventsusername");
-        String password=ConfigurationReader.getProperty("eventspassword");
-        LoginPage loginPage=new LoginPage();
-        loginPage.login(username,password);
+        String username = ConfigurationReader.getProperty("eventsusername");
+        String password = ConfigurationReader.getProperty("eventspassword");
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(username, password);
     }
 
     @Then("user navigates to {string} module")
     public void userNavigatesToModule(String module) {
-       BrowserUtils.waitForClickablility(createEventsPage.eventModule,2);
+        BrowserUtils.waitForClickablility(createEventsPage.eventModule, 2);
         createEventsPage.eventModule.click();
 
 
@@ -29,45 +31,53 @@ public class CreateAnEventStepDefinitions {
 
     @Then("user clicks on create button")
     public void userClicksOnCreateButton() {
-        BrowserUtils.waitForClickablility(createEventsPage.createButton,2);
+        BrowserUtils.waitForClickablility(createEventsPage.createButton, 2);
         createEventsPage.createButton.click();
     }
 
-
-    @Then("user enters {string} in events name box")
-    public void userEntersInEventsNameBox(String name) {
-       BrowserUtils.waitForClickablility(createEventsPage.eventsName,2);
+    @And("user enters events name as{string}")
+    public void userEntersEventsNameAs(String name) {
+        BrowserUtils.waitForClickablility(createEventsPage.eventsName,2);
         createEventsPage.eventsName.sendKeys(name);
+
     }
 
-    @Then("user enters organizer name")
-    public void userEntersOrganizerName() {
-        BrowserUtils.waitForClickablility(createEventsPage.organizer,3);
+    @Then("user click on Organize button then Create and Edit button")
+    public void userClickOnOrganizeButtonThenCreateAndEditButton() {
         createEventsPage.organizer.click();
-        BrowserUtils.waitForClickablility(createEventsPage.organizerName,2);
-        createEventsPage.organizerName.click();
-
-
-
-
+        BrowserUtils.waitForClickablility(createEventsPage.createAnOrganizerLink,2);
+        createEventsPage.createAnOrganizerLink.click();
+        BrowserUtils.wait(2);
     }
-    @Then("user picks location")
-    public void userPicksLocation() {
-        BrowserUtils.wait(3);
+
+    @Then("user enters the organizer name as {string}then clicks save button")
+    public void userEntersTheOrganizerNameAsThenClicksSaveButton(String organizerName) {
+        BrowserUtils.waitForVisibility(createEventsPage.organizerName,3);
+        createEventsPage.organizerName.sendKeys(organizerName);
+        BrowserUtils.waitForClickablility(createEventsPage.organizerSaveButton,3);
+        createEventsPage.organizerSaveButton.click();
+    }
+
+    @Then("user clicks on  location button then Create and Edit button")
+    public void userClicksOnLocationButtonThenCreateAndEditButton() {
         createEventsPage.location.click();
-        BrowserUtils.waitForClickablility(createEventsPage.locationName,2);
-        createEventsPage.locationName.click();
-
+        BrowserUtils.waitForClickablility(createEventsPage.CreateEditlocationName,2);
+        createEventsPage.CreateEditlocationName.click();
 
     }
 
-
+    @Then("user enters the location name{string} then click save button")
+    public void userEntersTheLocationNameThenClickSaveButton(String location) {
+        BrowserUtils.waitForVisibility(createEventsPage.locationName,2);
+        createEventsPage.locationName.sendKeys(location);
+        createEventsPage.saveCreatedLocationName.click();
+    }
 
 
     @Then("user picks who is responsible")
     public void userPicksWhoIsResponsible() {
         createEventsPage.responsible.click();
-        BrowserUtils.waitForClickablility(createEventsPage.chooseAdministrator,2);
+        BrowserUtils.waitForClickablility(createEventsPage.chooseAdministrator, 2);
         createEventsPage.chooseAdministrator.click();
     }
 
@@ -93,7 +103,21 @@ public class CreateAnEventStepDefinitions {
 
     @And("user verifies that event is created")
     public void userVerifiesThatEventIsCreated() {
-//       createEventsPage.eventsList();
+
+        String title=createEventsPage.titleAfterCreate.getText();
+        System.out.println(title);
+        Assert.assertTrue(title.contains("Batch 12"));
+
 
     }
 }
+
+
+
+
+
+
+
+
+
+
