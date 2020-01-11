@@ -21,7 +21,6 @@ public class LoginPage extends BasePage {
 
     public LoginPage() {
 
-
         PageFactory.initElements(Driver.get(), this);
     }
 
