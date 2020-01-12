@@ -34,6 +34,7 @@ public class CreateProductStepDefinitions {
         for(Map<String, String> map: dataTable) {
             createProductPage.ProductName.sendKeys(map.get("Product Name"));
             createProductPage.ProductType.sendKeys(map.get("Product Type"));
+            createProductPage.SalesPrice.clear();
             createProductPage.SalesPrice.sendKeys(map.get("Sales Price"));
            // createProductPage.Cost.sendKeys(map.get("Cost"));
         }
